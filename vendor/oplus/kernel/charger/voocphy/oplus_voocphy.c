@@ -3838,6 +3838,8 @@ void oplus_voocphy_handle_voocphy_status(struct work_struct *work)
 		chip->fastchg_check_stop = false;
 		oplus_voocphy_monitor_timer_start(chip, VOOC_THREAD_TIMER_FASTCHG_CHECK, VOOC_FASTCHG_CHECK_TIME);
 		oplus_voocphy_wake_check_chg_out_work(3000);
+		oplus_chg_unsuspend_charger();
+		oplus_chg_set_charger_type_unknown();
 		oplus_chg_wake_update_work();
 	} else if (intval == FAST_NOTIFY_ADAPTER_STATUS_ABNORMAL) {
 		voocphy_info("FAST_NOTIFY_ADAPTER_STATUS_ABNORMAL\r\n");

@@ -5562,11 +5562,7 @@ int oplus_chg_parse_charger_dt(struct oplus_chg_chip *chip)
         charger_xlog_printk(CHG_LOG_CRTI, "qcom,suport_pd_9v2a = %d\n", chip->suport_pd_9v2a);
 
 	oplus_chg_smooth_switch_v2_parse_dt(chip);
-	rc = of_property_read_u32(node, "oplus,aging_ffc_version",
-			&chip->aging_ffc_version);
-	if (rc) {
-		chip->aging_ffc_version = AGING_FFC_NOT_SUPPORT;
-	}
+	chip->aging_ffc_version = AGING_FFC_NOT_SUPPORT;
 
 	chip->support_wd0 = of_property_read_bool(node, "qcom,ccdetect_by_wd0");
 	chip->support_usbtemp_protect_v2 = of_property_read_bool(node, "qcom,support_usbtemp_protect_v2");
